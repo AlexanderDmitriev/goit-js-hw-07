@@ -24,15 +24,29 @@ const imageFromGallery = galleryItems.map(image => `<div class="gallery__item">
     />
  </a>
 </div>`).join('');
+
 galleryList.insertAdjacentHTML('afterBegin', imageFromGallery);
 
+let currentImage;
 
 
 const imagesHandler = (event) => {
-    console.log(event.target.dataset.source);
+  event.preventDefault();
+   if (event.target.nodeName !== "IMG") {
+    return;
+  } 
+
+  currentImage = event.target.dataset.source;
+  console.log(event.target.nodeName);
+  const instance = basicLightbox.create
+    (`<img src="${currentImage}">`);
+  
+  instance.show();
  }
 
 
 const galleryListener = document.querySelector('.gallery');
 galleryListener.addEventListener('click', imagesHandler);
+
+console.log(galleryList.target);
 
