@@ -30,6 +30,7 @@ galleryList.insertAdjacentHTML('afterBegin', imageFromGallery);
 let currentImage;
 
 
+
 const imagesHandler = (event) => {
   event.preventDefault();
    if (event.target.nodeName !== "IMG") {
@@ -42,11 +43,12 @@ const imagesHandler = (event) => {
     (`<img src="${currentImage}">`);
   
   instance.show();
+  
  }
 
 
 const galleryListener = document.querySelector('.gallery');
 galleryListener.addEventListener('click', imagesHandler);
 
-console.log(galleryList.target);
+
 
