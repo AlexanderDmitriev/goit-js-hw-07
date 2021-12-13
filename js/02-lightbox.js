@@ -38,3 +38,21 @@ const imageFromGallery = galleryItems.map(image => `<div class="gallery__item">
 </div>`).join('');
 
 href.galleryList.insertAdjacentHTML('afterBegin', imageFromGallery);
+////////////////////////////////////////////////////////////////
+let currentImage;
+
+const imagesHandler = (event) => {
+  event.preventDefault();
+  
+   if (event.target.nodeName !== "IMG") {
+    return;
+  } 
+    
+    const lightbox = new SimpleLightbox('.gallery a');
+    console.log(lightbox.options.captions);
+    
+    
+
+ }
+
+href.galleryList.addEventListener('click', imagesHandler);
