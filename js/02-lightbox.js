@@ -20,15 +20,17 @@
  */
 
 import { galleryItems } from './gallery-items.js';
+
 // Change code below this line
 
 const href = {
   galleryList: document.querySelector('.gallery'),
+  
 }
 
 const imageFromGallery = galleryItems.map(image => `<div class="gallery__item">
   <a class="gallery__link" href=${image.original}>
-    <img class="gallery__link"
+    <img 
       class="gallery__image"
       src=${image.preview}
       data-source=${image.original}
@@ -39,7 +41,6 @@ const imageFromGallery = galleryItems.map(image => `<div class="gallery__item">
 
 href.galleryList.insertAdjacentHTML('afterBegin', imageFromGallery);
 ////////////////////////////////////////////////////////////////
-let currentImage;
 
 const imagesHandler = (event) => {
   event.preventDefault();
@@ -47,12 +48,18 @@ const imagesHandler = (event) => {
    if (event.target.nodeName !== "IMG") {
     return;
   } 
-    
-    const lightbox = new SimpleLightbox('.gallery a');
-    console.log(lightbox.options.captions);
-    
-    
+   
+  const lightboxHandler = () => { 
+    lightbox.options.captionsData = event.target.alt;
+    console.log(lightbox.options.captionsData);
 
+  }
+  
+  const lightbox = new SimpleLightbox('.gallery a');
+  lightbox.options.captionDelay = 250;
+  lightbox.on('show.simplelightbox', lightboxHandler);
+
+    
  }
-
+//////////////////////////////////////////////////////////////
 href.galleryList.addEventListener('click', imagesHandler);

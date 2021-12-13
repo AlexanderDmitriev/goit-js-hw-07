@@ -18,7 +18,7 @@ const href = {
 
 const imageFromGallery = galleryItems.map(image => `<div class="gallery__item">
   <a class="gallery__link" href=${image.original}>
-    <img class="gallery__link"
+    <img 
       class="gallery__image"
       src=${image.preview}
       data-source=${image.original}
