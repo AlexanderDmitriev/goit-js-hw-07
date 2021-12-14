@@ -42,24 +42,27 @@ const imageFromGallery = galleryItems.map(image => `<div class="gallery__item">
 href.galleryList.insertAdjacentHTML('afterBegin', imageFromGallery);
 ////////////////////////////////////////////////////////////////
 
-const imagesHandler = (event) => {
+/* const imagesHandler = (event) => {
   event.preventDefault();
   
    if (event.target.nodeName !== "IMG") {
     return;
   } 
-   
-  const lightboxHandler = () => { 
-    lightbox.options.captionsData = event.target.alt;
-    console.log(lightbox.options.captionsData);
-
-  }
-  
-  const lightbox = new SimpleLightbox('.gallery a');
-  lightbox.options.captionDelay = 250;
-  lightbox.on('show.simplelightbox', lightboxHandler);
-
     
  }
 //////////////////////////////////////////////////////////////
-href.galleryList.addEventListener('click', imagesHandler);
+href.galleryList.addEventListener('click', imagesHandler); */
+
+let lightbox = new SimpleLightbox('.gallery a', {
+  animationSpeed: 500,
+  fadeSpeed: 500,
+  captions: true,
+  captionType: 'attr',
+  captionsData: 'alt',
+  captionPosition: 'bottom',
+  captionDelay: 250,
+});
+
+lightbox.on(() => {
+  lightbox.next();
+});
